@@ -39,7 +39,8 @@
         <?php $this->widget('zii.widgets.CMenu',array(
           'htmlOptions'=>array("class"=>"nav"),
           'items'=>array(
-            array('label'=>'Home', 'url'=>array('/site/index')),
+            array('label'=>'Inicio', 'url'=>array('/site/index')),
+            array('label'=>'Prueba', 'url'=>array('/prueba/index')),
             array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
             array('label'=>'Contact', 'url'=>array('/site/contact')),
             array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
@@ -65,6 +66,7 @@
   </div> 
   </div>
 <?php endif?>
+
 <?php if(($msgs=Yii::app()->user->getFlashes())!==null and $msgs!==array()):?>
   <div class="container" style="padding-top:0">
     <div class="row-fluid">
@@ -80,6 +82,7 @@
     </div>
   </div>
 <?php endif;?>
+
 <?php echo $content;?>
   
 <footer class="footer bg-ft clearfix pd4">
