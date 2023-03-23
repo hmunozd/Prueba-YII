@@ -1,6 +1,10 @@
 <h1>Campos Extra</h1>
 
-<?php $form = $this->beginWidget("CActiveForm"); ?>
+<?php $form = $this->beginWidget("CActiveForm", array(
+    'id' => 'my-form',
+    'enableAjaxValidation' => false,
+    'htmlOptions' => array('enctype' => 'multipart/form-data'),
+)); ?>
 
 <?php if ($form->errorSummary($model)) : ?>
     <div class="alert alert-error">
@@ -26,7 +30,7 @@
     </div>
     <div class="">
         <?php echo $form->labelEx($model, 'precio'); ?>
-        <?php echo $form->numberField($model, 'precio'); ?>
+        <?php echo $form->numberField($model, 'precio', array('name' => 'CamposExtra[precio]')); ?>
         <?php echo $form->error($model, 'precio'); ?>
     </div>
     <div class="">
@@ -34,7 +38,8 @@
         <?php echo $form->dropDownList(
             $model,
             'metodo_pago',
-            array('' => 'Seleccione un metodo de pago...', 'PSE' => 'PSE', 'Card' => 'Tarjeta debito', 'Paypal' => 'Paypal')
+            array('' => 'Seleccione un metodo de pago...', 'PSE' => 'PSE', 'Card' => 'Tarjeta debito', 'Paypal' => 'Paypal'),
+            array('name' => 'CamposExtra[metodo_pago]')
         ); ?>
         <?php echo $form->error($model, 'metodo_pago'); ?>
     </div>

@@ -13,6 +13,7 @@ class CamposExtra extends CActiveRecord
             array('articulo, motivo_negatividad', 'length', 'max' => 100),
             array('precio', 'length', 'max' => 150),
             array('metodo_pago', 'length', 'max' => 50),
+            array('metodo_pago, precio', 'requiredextra', 'on' => 'extra'),
         );
     }
 
@@ -26,6 +27,15 @@ class CamposExtra extends CActiveRecord
             'metodo_pago' => 'Metodo de pago',
             'motivo_negatividad' => 'Motivo de negatividad',
         );
+    }
+
+    public function requiredextra($attribute, $param)
+    {
+        if($_POST['CamposExtra']['articulo'] == 'pant' || $_POST['CamposExtra']['articulo'] == 'shirt'){
+            if (empty($this->$attribute)) {
+                $this->addError($attribute, 'El campo "' . $attribute . '" es requerido.');
+            }
+        }
     }
 
     public static function model($className = __CLASS__)

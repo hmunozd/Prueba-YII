@@ -15,6 +15,7 @@ class Cliente extends CActiveRecord
             array('telefono', 'length', 'max' => 20),
             array('email', 'length', 'max' => 150),
             array('genero', 'length', 'max' => 10),
+            array('email', 'email'),
         );
     }
 

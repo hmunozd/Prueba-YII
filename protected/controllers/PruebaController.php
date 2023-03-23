@@ -33,7 +33,7 @@ class PruebaController extends Controller
 
     public function actionExtra($id, $compra)
     {
-        $model = new CamposExtra();
+        $model = new CamposExtra('extra');
 
         $cliente = Cliente::model()->findByPk($id);
         if ($cliente === null)
@@ -42,8 +42,10 @@ class PruebaController extends Controller
         $model->id_externo = $id;
         if (isset($_POST['CamposExtra'])) {
             $model->attributes = $_POST['CamposExtra'];
-            if ($model->save())
+            if($model->validate()){
+                if ($model->save())
                 $this->redirect(array('index'));
+            }
         }
 
         $this->render('extra', array('model' => $model, 'compra' => $compra));
